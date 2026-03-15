@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Fun360 Party Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:#FFF8F0;color:#1A1A2E;overflow-x:hidden}
+.rb{height:6px;background:linear-gradient(90deg,#FF3B5C,#FF7A00,#FFD600,#00C97A,#0078FF,#8B2BE2,#FF4FBF)}
+nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{font-family:'Fredoka One',cursive;font-size:2rem;text-decoration:none;background:linear-gradient(135deg,#0078FF,#8B2BE2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo span{-webkit-text-fill-color:#FF7A00}
+.nav-center{display:flex;gap:1.8rem;list-style:none}
+.nav-center a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:0.9rem;transition:color 0.2s}
+.nav-center a:hover,.nav-center a.active{color:#0078FF}
+.nav-right{display:flex;align-items:center;gap:0.9rem}
+.nav-phone{font-weight:800;font-size:0.88rem;color:#1A1A2E;text-decoration:none;white-space:nowrap}
+.nav-phone:hover{color:#0078FF}
+.nav-book{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:0.5rem 1.4rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1rem;text-decoration:none;box-shadow:0 4px 16px rgba(255,150,0,0.35);transition:transform 0.2s;white-space:nowrap}
+.nav-book:hover{transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:3px;background:#1A1A2E;border-radius:3px}
+.mob-menu{display:none;position:fixed;top:70px;left:0;right:0;background:white;z-index:998;padding:1rem 5% 1.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.12);flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:1rem;padding:0.85rem 0;border-bottom:1px solid #f0f0f0}
+.mob-menu a:last-child{border-bottom:none}
+.mob-cta{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E !important;text-align:center;border-radius:12px;margin-top:0.6rem;padding:0.9rem !important;font-family:'Fredoka One',cursive;font-size:1.1rem;border-bottom:none !important}
+@media(max-width:900px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:520px){.nav-phone{display:none}}
+
+.page-hero{background:linear-gradient(135deg,#FF7A00,#FF4FBF);padding:4rem 5%;text-align:center;color:white}
+.page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.2rem,5vw,4rem);margin-bottom:0.8rem}
+.page-hero p{font-size:1.05rem;font-weight:600;opacity:0.9;max-width:580px;margin:0 auto;line-height:1.65}
+
+.section{padding:4.5rem 5%}
+.slabel{font-size:0.76rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#0078FF;margin-bottom:0.4rem}
+.stitle{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4.5vw,3rem);color:#1A1A2E;margin-bottom:0.8rem;line-height:1.1}
+.ssub{color:#666;font-size:1rem;max-width:600px;line-height:1.75;margin-bottom:2rem}
+.tc{text-align:center}
+
+/* ABOUT SPLIT */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px}
+@media(max-width:768px){.about-split{grid-template-columns:1fr}}
+.about-img{border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.12)}
+.about-img img{width:100%;height:380px;object-fit:cover;display:block}
+.about-text h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem;line-height:1.1}
+.about-text p{color:#555;font-size:1rem;line-height:1.75;margin-bottom:1rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem}
+.pill{background:linear-gradient(135deg,#eef4ff,#f5eeff);border:1px solid #d0d8ff;color:#0078FF;padding:0.45rem 1rem;border-radius:50px;font-weight:800;font-size:0.85rem}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.5rem;max-width:900px}
+.stat-card{text-align:center;background:white;border-radius:20px;padding:2rem 1.5rem;box-shadow:0 4px 18px rgba(0,0,0,0.07)}
+.stat-num{font-family:'Fredoka One',cursive;font-size:2.8rem;margin-bottom:0.3rem}
+.stat-card p{color:#666;font-size:0.9rem;font-weight:700}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.step{text-align:center;padding:2rem 1.4rem;border-radius:20px;background:white;box-shadow:0 4px 18px rgba(0,0,0,0.06)}
+.snum{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1.5rem;color:white;margin:0 auto 1rem}
+.step h4{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:0.45rem}
+.step p{color:#666;font-size:0.9rem;line-height:1.65}
+
+/* DELIVERY */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:700px}
+@media(max-width:580px){.dgrid{grid-template-columns:1fr}}
+.dc{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:1.7rem}
+.dc .di{font-size:2.2rem;margin-bottom:0.7rem}
+.dc h4{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:0.35rem;color:#FFD600}
+.dc p{color:rgba(255,255,255,0.72);font-size:0.93rem;line-height:1.65}
+.dc p strong{color:#FFD600}
+
+/* FAQ */
+.flist{max-width:720px;display:flex;flex-direction:column;gap:0.9rem}
+.fi{background:white;border-radius:15px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.fq{padding:1.1rem 1.4rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:0.97rem;color:#1A1A2E;user-select:none}
+.fq .arr{color:#0078FF;transition:transform 0.3s}
+.fi.open .arr{transform:rotate(180deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;color:#666;font-size:0.94rem;line-height:1.7;padding:0 1.4rem}
+.fi.open .fa{max-height:300px;padding:0 1.4rem 1.2rem}
+
+.cta-band{background:linear-gradient(135deg,#0078FF,#8B2BE2);padding:4rem 5%;text-align:center}
+.cta-band h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,5vw,3rem);color:white;margin-bottom:0.8rem}
+.cta-band p{color:rgba(255,255,255,0.9);font-size:1.05rem;margin-bottom:2rem;font-weight:600}
+.cta-call{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:1rem 2.5rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1.2rem;text-decoration:none;box-shadow:0 8px 28px rgba(255,120,0,0.4);transition:transform 0.2s;display:inline-block}
+.cta-call:hover{transform:translateY(-3px)}
+
+footer{background:#1A1A2E;color:rgba(255,255,255,0.7);padding:3rem 5% 2rem}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:1.5rem}
+@media(max-width:720px){.ftop{grid-template-columns:1fr;gap:1.8rem}}
+.fbrand .flogo{font-family:'Fredoka One',cursive;font-size:2rem;background:linear-gradient(135deg,#FFD600,#FF7A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.7rem}
+.fbrand p{font-size:0.9rem;line-height:1.75;max-width:280px;margin-bottom:0.6rem}
+.fbrand a{display:block;color:#FFD600;font-weight:800;font-size:0.92rem;text-decoration:none;margin-bottom:0.3rem}
+.fc h5{font-family:'Fredoka One',cursive;font-size:1.05rem;color:white;margin-bottom:0.9rem}
+.fc a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;margin-bottom:0.45rem;transition:color 0.2s}
+.fc a:hover{color:#FFD600}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.82rem;opacity:0.5}
+.fade{opacity:0;transform:translateY(26px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="rb"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Fun<span>360</span></a>
+  <ul class="nav-center">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="contact.html">Contact &amp; Book</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+14753304368" class="nav-phone">&#128222; (475) 330-4368</a>
+    <a href="tel:+14753304368" class="nav-book">Book Your Party!</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="about.html" onclick="closeMob()">About Us</a>
+  <a href="contact.html" onclick="closeMob()">Contact &amp; Book</a>
+  <a href="tel:+14753304368" class="mob-cta" onclick="closeMob()">&#128222; Call to Book &mdash; (475) 330-4368</a>
+</div>
+
+<div class="page-hero">
+  <h1>About Fun360</h1>
+  <p>CT's favorite kids party rental company &mdash; bringing the full circle of fun to Fairfield County and beyond!</p>
+</div>
+<div class="rb"></div>
+
+<!-- ABOUT SECTION -->
+<div class="section" style="background:white">
+  <div class="about-split fade">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=700&q=80" alt="Fun360 Party">
+    </div>
+    <div class="about-text">
+      <div class="slabel">Who We Are</div>
+      <h2 class="stitle">Your <span style="color:#FF7A00">Party Partners</span> in Fairfield County</h2>
+      <p>Fun360 is Fairfield County's go-to kids party rental company. We started with one simple idea: make throwing an amazing party as easy as possible for families in our community.</p>
+      <p>We deliver, fully set up, and pick up everything &mdash; bounce houses, foam cannons, cotton candy, popcorn, chairs, tables, and tents. You focus on enjoying the day while we handle all the work.</p>
+      <p>Based in Bridgeport, CT, we serve families across Fairfield County and beyond. We pride ourselves on same-day responses, flexible pricing, and going above and beyond for every single client.</p>
+      <div class="about-pills">
+        <span class="pill">&#127984; 3 Bounce Styles</span>
+        <span class="pill">&#11088; 5 Star Rated</span>
+        <span class="pill">&#128172; Same-Day Response</span>
+        <span class="pill">&#128176; Prices Negotiable</span>
+        <span class="pill">&#128666; Free 30mi Delivery</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="section" style="background:#FFF8F0">
+  <div class="tc fade">
+    <div class="slabel">By the Numbers</div>
+    <h2 class="stitle">Fun360 <span style="color:#0078FF">At a Glance</span></h2>
+  </div>
+  <div class="stats-row fade" style="margin:0 auto">
+    <div class="stat-card"><div class="stat-num" style="color:#0078FF">3</div><p>Bounce House Styles</p></div>
+    <div class="stat-card"><div class="stat-num" style="color:#FF7A00">8+</div><p>Party Services</p></div>
+    <div class="stat-card"><div class="stat-num" style="color:#00C97A">100%</div><p>Setup Included</p></div>
+    <div class="stat-card"><div class="stat-num" style="color:#FFD600">5&#11088;</div><p>Client Rating</p></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section" style="background:white">
+  <div class="tc fade">
+    <div class="slabel">Simple Process</div>
+    <h2 class="stitle">How It <span style="color:#FF7A00">Works</span></h2>
+    <p class="ssub" style="margin:0 auto 2.8rem">From first call to party day &mdash; here's exactly what to expect when you book with Fun360.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade"><div class="snum" style="background:linear-gradient(135deg,#0078FF,#8B2BE2)">1</div><h4>Call or Email Us</h4><p>Reach out by phone at (475) 330-4368 or email us. Tell us your date, location, and what you need.</p></div>
+    <div class="step fade"><div class="snum" style="background:linear-gradient(135deg,#FF7A00,#FF3B5C)">2</div><h4>Get a Free Quote</h4><p>We respond the same day with a custom quote. All prices are negotiable &mdash; we work with every budget.</p></div>
+    <div class="step fade"><div class="snum" style="background:linear-gradient(135deg,#00C97A,#0078FF)">3</div><h4>Pay Deposit &amp; Book</h4><p>Confirm with a deposit via Cash, Zelle, or Venmo. Your date is locked in and reserved just for you!</p></div>
+    <div class="step fade"><div class="snum" style="background:linear-gradient(135deg,#FF4FBF,#FF7A00)">4</div><h4>We Show Up &amp; Set Up</h4><p>We arrive early on party day and professionally set up every single item. Balance due on arrival.</p></div>
+    <div class="step fade"><div class="snum" style="background:linear-gradient(135deg,#FFD600,#00C97A)">5</div><h4>You Party, We Clean Up</h4><p>Enjoy your celebration stress-free. When it's over, we return and pick up everything. Done!</p></div>
+  </div>
+</div>
+
+<!-- DELIVERY -->
+<div class="section" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3e);color:white">
+  <div class="fade">
+    <div class="slabel" style="color:#FFD600">Delivery Info</div>
+    <h2 class="stitle" style="color:white">Delivery &amp; <span style="color:#FFD600">Coverage</span></h2>
+    <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:2.5rem">Based in Bridgeport, CT. We serve all of Fairfield County and nearby areas. Transparent, simple pricing.</p>
+  </div>
+  <div class="dgrid fade">
+    <div class="dc"><div class="di">&#128666;</div><h4>Free Delivery Zone</h4><p>Delivery <strong>included free</strong> for locations within 30 miles of Bridgeport &mdash; covers most of Fairfield County!</p></div>
+    <div class="dc"><div class="di">&#128205;</div><h4>Beyond 30 Miles</h4><p>Going further? Just <strong>$5 per mile</strong> beyond the 30-mile zone. Always transparent, no surprises.</p></div>
+    <div class="dc"><div class="di">&#128295;</div><h4>Full Setup</h4><p>We <strong>fully set up every item</strong> before your guests arrive. No tools or effort needed from you.</p></div>
+    <div class="dc"><div class="di">&#9851;</div><h4>Full Pickup</h4><p>When the party ends, we return and <strong>break everything down</strong> and load it all up. Easy!</p></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" style="background:#FFF8F0">
+  <div class="slabel">FAQ</div>
+  <h2 class="stitle">Common <span style="color:#0078FF">Questions</span></h2>
+  <div class="flist fade">
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">How far do you travel for delivery? <span class="arr">&#9660;</span></div><div class="fa">We are based in Bridgeport, CT and cover all of Fairfield County. Delivery within 30 miles is free. Beyond that, we charge $5 per mile. Include your location when you reach out and we will calculate the exact cost!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Is setup really included? <span class="arr">&#9660;</span></div><div class="fa">100%! We deliver, fully set up every item, and return to break it all down when the party is over. You do not lift a finger. Just show us your space and we handle everything.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">What do I need to provide? <span class="arr">&#9660;</span></div><div class="fa">For bounce houses: a flat outdoor space and a standard outdoor electrical outlet within 50 feet. For the pool combo: also a garden hose. For the foam cannon: a garden hose and outlet. We bring everything else!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Do I need to pay a deposit? <span class="arr">&#9660;</span></div><div class="fa">Yes &mdash; a deposit is required to reserve your date and lock in your rentals. The deposit amount is included in your custom quote. It goes toward your total and the balance is due on the day of your event.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Are the bounce houses safe? <span class="arr">&#9660;</span></div><div class="fa">Absolutely. All inflatables are commercial-grade, regularly cleaned and inspected. We secure them properly at setup. Adult supervision is required at all times and we will walk you through safety guidelines when we arrive.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">What if it rains? <span class="arr">&#9660;</span></div><div class="fa">We monitor weather and contact you ahead of your event. Bounce houses cannot be used in rain or high winds. We will work with you on rescheduling if needed &mdash; another reason adding a tent is always a smart choice!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">How do I pay? <span class="arr">&#9660;</span></div><div class="fa">We accept Cash, Zelle, and Venmo. The deposit is due when you confirm your booking and the remaining balance is due when we arrive on party day.</div></div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Ready to Get Started?</h2>
+  <p>Call us today &mdash; same-day response guaranteed. All prices negotiable!</p>
+  <a href="tel:+14753304368" class="cta-call">&#128222; Call (475) 330-4368</a>
+</div>
+
+<footer>
+  <div class="ftop">
+    <div class="fbrand"><span class="flogo">Fun360</span><p>CT's favorite kids party rental company. We bring the full circle of fun to you!</p><a href="tel:+14753304368">&#128222; (475) 330-4368</a><a href="mailto:fun360renter@gmail.com">&#128140; fun360renter@gmail.com</a></div>
+    <div class="fc"><h5>Pages</h5><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About Us</a><a href="contact.html">Contact &amp; Book</a></div>
+    <div class="fc"><h5>Contact</h5><a href="tel:+14753304368">(475) 330-4368</a><a href="mailto:fun360renter@gmail.com">fun360renter@gmail.com</a><a href="#">Fairfield County, CT</a><a href="#">Cash &middot; Zelle &middot; Venmo</a></div>
+  </div>
+  <div class="fbot"><span>&#169; 2026 Fun360 &middot; Fairfield County, CT &middot; All rights reserved</span><span>Made with love for the community</span></div>
+</footer>
+<script>
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('mobMenu');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.hamburger')){m.classList.remove('open');}});
+function toggleFaq(el){var item=el.parentElement;var was=item.classList.contains('open');document.querySelectorAll('.fi').forEach(function(i){i.classList.remove('open');});if(!was){item.classList.add('open');}}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
