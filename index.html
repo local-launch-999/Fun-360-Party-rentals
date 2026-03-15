@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun360 - Party Rentals in Fairfield County, CT</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;background:#FFF8F0;color:#1A1A2E;overflow-x:hidden}
+.rb{height:6px;background:linear-gradient(90deg,#FF3B5C,#FF7A00,#FFD600,#00C97A,#0078FF,#8B2BE2,#FF4FBF)}
+nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Fredoka One',cursive;font-size:1.8rem;background:linear-gradient(135deg,#0078FF,#8B2BE2,#FF4FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.logo span{-webkit-text-fill-color:#FF7A00}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:#0078FF}
+.nav-btn{background:linear-gradient(135deg,#0078FF,#8B2BE2);color:white !important;padding:0.45rem 1.2rem;border-radius:50px;font-weight:800 !important;-webkit-text-fill-color:white !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:3px;background:#1A1A2E;border-radius:3px}
+.mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:white;z-index:998;padding:1.5rem 5%;box-shadow:0 8px 30px rgba(0,0,0,0.1);flex-direction:column;gap:0.8rem}
+.mob-menu.open{display:flex}
+.mob-menu a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:1rem;padding:0.5rem 0;border-bottom:1px solid #f0f0f0}
+@media(max-width:768px){.nav-links,.nav-btn-wrap{display:none}.hamburger{display:flex}}
+.hero{min-height:90vh;background:linear-gradient(160deg,#0078FF 0%,#8B2BE2 50%,#FF4FBF 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 5%;position:relative;overflow:hidden}
+.hero-content{position:relative;z-index:2;max-width:780px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);color:white;font-weight:800;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:50px;margin-bottom:1.5rem}
+.hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.8rem,7vw,5.5rem);color:white;line-height:1.05;margin-bottom:1.2rem}
+.hero h1 .ac{background:linear-gradient(90deg,#FFD600,#FF7A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:rgba(255,255,255,0.9);font-size:clamp(1rem,2.5vw,1.2rem);font-weight:600;margin-bottom:2rem;max-width:550px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-p{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:0.9rem 2.2rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1.1rem;text-decoration:none;box-shadow:0 8px 25px rgba(255,120,0,0.4);transition:transform 0.2s;display:inline-block}
+.btn-p:hover{transform:translateY(-3px)}
+.btn-s{background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.7);color:white;padding:0.9rem 2.2rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1.1rem;text-decoration:none;display:inline-block;transition:background 0.2s}
+.btn-s:hover{background:rgba(255,255,255,0.25)}
+.stats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:50px;padding:0.5rem 1.2rem;color:white;font-weight:800;font-size:0.85rem}
+.stat strong{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-right:3px}
+.trust{background:#1A1A2E;padding:0.9rem 5%;display:flex;justify-content:center;align-items:center;gap:2rem;flex-wrap:wrap}
+.ti{color:rgba(255,255,255,0.75);font-weight:700;font-size:0.82rem;display:flex;align-items:center;gap:0.5rem}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+section{padding:4.5rem 5%}
+.slabel{font-size:0.78rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#0078FF;margin-bottom:0.4rem}
+.stitle{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4.5vw,3rem);color:#1A1A2E;margin-bottom:0.8rem;line-height:1.1}
+.ssub{color:#666;font-size:1rem;max-width:540px;line-height:1.7;margin-bottom:2.5rem}
+.tc{text-align:center}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.8rem}
+.sc{border-radius:22px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s;background:white}
+.sc:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,0.13)}
+.siw{position:relative;height:200px;overflow:hidden}
+.siw img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.sc:hover .siw img{transform:scale(1.06)}
+.stag{position:absolute;top:11px;left:11px;padding:0.25rem 0.8rem;border-radius:50px;font-size:0.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:white}
+.sb{padding:1.4rem}
+.sb h3{font-family:'Fredoka One',cursive;font-size:1.4rem;margin-bottom:0.4rem;color:#1A1A2E}
+.sb p{color:#666;font-size:0.92rem;line-height:1.6}
+.htu{background:#f8f9ff;border-left:4px solid #0078FF;padding:0.75rem 0.9rem;margin-top:0.9rem;font-size:0.85rem;color:#444;line-height:1.6;border-radius:0 10px 10px 0}
+.htu strong{color:#0078FF;display:block;margin-bottom:3px;font-size:0.76rem;text-transform:uppercase;letter-spacing:1px}
+.spn{display:inline-block;margin-top:0.9rem;font-weight:800;font-size:0.87rem;color:#0078FF}
+#delivery{background:linear-gradient(135deg,#0a0a1a,#1a1a3e);color:white}
+#delivery .slabel{color:#FFD600}
+#delivery .stitle{color:white}
+#delivery .ssub{color:rgba(255,255,255,0.7)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:680px}
+@media(max-width:580px){.dgrid{grid-template-columns:1fr}}
+.dc{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:1.6rem}
+.dc .di{font-size:2.2rem;margin-bottom:0.7rem}
+.dc h4{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:0.35rem;color:#FFD600}
+.dc p{color:rgba(255,255,255,0.73);font-size:0.92rem;line-height:1.6}
+.dc p strong{color:#FFD600}
+#deposit{background:#FFF8F0}
+.dbox{background:linear-gradient(135deg,#fff 60%,#ffeef8 100%);border:2px solid #f0d0f0;border-radius:26px;padding:2.5rem;max-width:740px;box-shadow:0 8px 35px rgba(139,43,226,0.09)}
+.dbox .bi{font-size:3.5rem;margin-bottom:0.8rem;display:block}
+.dbox h3{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#8B2BE2;margin-bottom:0.9rem}
+.dbox p{color:#555;font-size:0.97rem;line-height:1.7;margin-bottom:0.75rem}
+.pays{display:flex;gap:0.7rem;flex-wrap:wrap;margin-top:1.3rem}
+.pay{color:white;padding:0.4rem 1rem;border-radius:8px;font-weight:800;font-size:0.88rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.step{text-align:center;padding:1.8rem 1.3rem;border-radius:18px;background:#FFF8F0}
+.snum{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1.5rem;color:white;margin:0 auto 1rem}
+.step h4{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:0.45rem}
+.step p{color:#666;font-size:0.9rem;line-height:1.6}
+#book{background:linear-gradient(160deg,#FF3B5C,#FF7A00,#FFD600)}
+#book .slabel{color:rgba(255,255,255,0.85)}
+#book .stitle{color:white}
+#book .ssub{color:rgba(255,255,255,0.88)}
+.fcard{background:white;border-radius:26px;padding:2.5rem;max-width:700px;box-shadow:0 18px 55px rgba(0,0,0,0.18)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:580px){.fgrid{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:0.35rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-weight:900;font-size:0.8rem;letter-spacing:0.5px;color:#1A1A2E;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{border:2px solid #e0e0e0;border-radius:11px;padding:0.75rem 0.9rem;font-family:'Nunito',sans-serif;font-size:0.97rem;color:#1A1A2E;background:#fafafa;outline:none;transition:border-color 0.2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#0078FF;background:white}
+.fg textarea{resize:vertical;min-height:100px}
+.cbgrid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+@media(max-width:460px){.cbgrid{grid-template-columns:1fr}}
+.cbi{display:flex;align-items:center;gap:0.5rem;background:#f5f5f5;border:2px solid transparent;border-radius:9px;padding:0.55rem 0.8rem;cursor:pointer;font-weight:700;font-size:0.87rem;transition:all 0.2s;user-select:none}
+.cbi.checked{background:#eef4ff;border-color:#0078FF;color:#0078FF}
+.subbtn{width:100%;padding:1rem;background:linear-gradient(135deg,#0078FF,#8B2BE2);color:white;border:none;border-radius:13px;font-family:'Fredoka One',cursive;font-size:1.25rem;cursor:pointer;margin-top:1.3rem;transition:transform 0.2s;box-shadow:0 6px 22px rgba(0,120,255,0.28)}
+.subbtn:hover{transform:translateY(-2px)}
+.fnote{text-align:center;font-size:0.82rem;color:#999;margin-top:0.8rem}
+.oc{text-align:center;margin-top:2rem;color:white}
+.oc p{font-weight:700;font-size:0.97rem;margin-bottom:0.4rem;opacity:0.9}
+.oc a{color:#FFD600;font-family:'Fredoka One',cursive;font-size:1.2rem;text-decoration:none}
+.succ{display:none;text-align:center;padding:2rem}
+.succ .ck{font-size:3.5rem;margin-bottom:0.8rem}
+.succ h3{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#00C97A;margin-bottom:0.5rem}
+.succ p{color:#555}
+#faq{background:#FFF8F0}
+.flist{max-width:700px;display:flex;flex-direction:column;gap:0.9rem}
+.fi{background:white;border-radius:15px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.fq{padding:1.1rem 1.4rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:0.97rem;color:#1A1A2E;user-select:none}
+.fq .arr{color:#0078FF;transition:transform 0.3s;font-size:1rem}
+.fi.open .arr{transform:rotate(180deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;color:#666;font-size:0.94rem;line-height:1.7;padding:0 1.4rem}
+.fi.open .fa{max-height:300px;padding:0 1.4rem 1.1rem}
+footer{background:#1A1A2E;color:rgba(255,255,255,0.75);padding:2.8rem 5% 1.8rem}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:1.3rem}
+@media(max-width:720px){.ftop{grid-template-columns:1fr;gap:1.5rem}}
+.fbrand .flogo{font-family:'Fredoka One',cursive;font-size:1.8rem;background:linear-gradient(135deg,#FFD600,#FF7A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.7rem}
+.fbrand p{font-size:0.9rem;line-height:1.7;max-width:270px}
+.fc h5{font-family:'Fredoka One',cursive;font-size:1.05rem;color:white;margin-bottom:0.9rem}
+.fc a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;margin-bottom:0.4rem;transition:color 0.2s}
+.fc a:hover{color:#FFD600}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.82rem;opacity:0.55}
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#1A1A2E;color:white;padding:0.9rem 1.4rem;border-radius:13px;font-weight:700;font-size:0.9rem;box-shadow:0 8px 28px rgba(0,0,0,0.22);transform:translateY(100px);opacity:0;transition:all 0.4s;z-index:9999;max-width:300px}
+#toast.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<div class="rb"></div>
+
+<nav>
+  <a href="#top" class="logo">Fun<span>360</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#deposit">Pricing</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li class="nav-btn-wrap"><a href="#book" class="nav-btn">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#delivery" onclick="closeMob()">Delivery</a>
+  <a href="#deposit" onclick="closeMob()">Pricing &amp; Deposit</a>
+  <a href="#how" onclick="closeMob()">How It Works</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#book" onclick="closeMob()" style="color:#0078FF">Get a Free Quote</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-badge">Fairfield County, CT</div>
+    <h1>The Most <span class="ac">Fun</span> Party<br>in the Neighborhood!</h1>
+    <p>Bounce houses, foam cannons, cotton candy, popcorn &amp; more &mdash; we deliver, set up, and pick up everything. You just celebrate!</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-p">Book Your Party!</a>
+      <a href="#services" class="btn-s">Explore Services</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>5 Star</strong> Rated</div>
+      <div class="stat"><strong>100%</strong> Setup Included</div>
+      <div class="stat"><strong>8+</strong> Party Services</div>
+      <div class="stat">Same-Day Response</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="ti"><span class="dot" style="background:#00C97A"></span>Full Setup &amp; Takedown</div>
+  <div class="ti"><span class="dot" style="background:#FFD600"></span>All Prices Negotiable</div>
+  <div class="ti"><span class="dot" style="background:#FF3B5C"></span>Cash &middot; Zelle &middot; Venmo</div>
+  <div class="ti"><span class="dot" style="background:#0078FF"></span>Same-Day Response</div>
+</div>
+<div class="rb"></div>
+
+<section id="services" style="background:white">
+  <div class="tc">
+    <div class="slabel">What We Offer</div>
+    <h2 class="stitle">Everything for the <span style="color:#0078FF">Perfect Party</span></h2>
+    <p class="ssub" style="margin:0 auto 2.5rem">Each rental includes full delivery, professional setup, and pickup. We handle it all &mdash; you just show up and have fun!</p>
+  </div>
+  <div class="sgrid">
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=600&q=80" alt="Large Bounce House with Slide and Pool" loading="lazy">
+        <span class="stag" style="background:#0078FF">Most Popular</span>
+      </div>
+      <div class="sb">
+        <h3>Big Bounce House + Slide + Pool</h3>
+        <p>Our biggest attraction! Massive bounce area, exciting slide AND a splash mini pool. Perfect for summer parties and big groups &mdash; kids go absolutely wild!</p>
+        <div class="htu"><strong>How to Use</strong>Flat outdoor space + standard electrical outlet needed. Remove shoes before entering. No food or drinks inside. Adult supervision required at all times.</div>
+        <span class="spn">Pricing negotiable &mdash; ask for a quote</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Bounce House with Slide" loading="lazy">
+        <span class="stag" style="background:#FF7A00">Great for All Ages</span>
+      </div>
+      <div class="sb">
+        <h3>Bounce House + Slide</h3>
+        <p>All the thrill without the water! A large bounce area with attached slide. Perfect for spring, fall, or any season &mdash; works year round.</p>
+        <div class="htu"><strong>How to Use</strong>Flat space + electrical outlet needed. Remove shoes. One child at top of slide at a time &mdash; slide feet-first only. Adult supervision required.</div>
+        <span class="spn">Pricing negotiable &mdash; ask for a quote</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1566207474742-de921626ad0c?w=600&q=80" alt="Mini Bounce House" loading="lazy">
+        <span class="stag" style="background:#FF4FBF">Great for Toddlers</span>
+      </div>
+      <div class="sb">
+        <h3>Mini Bounce House</h3>
+        <p>Our smaller bounce house for younger kids and tighter spaces. Still packs a ton of fun &mdash; perfect for toddler birthdays and smaller backyards!</p>
+        <div class="htu"><strong>How to Use</strong>Fits in smaller yards. Outlet within 50ft needed. Best for ages 2-8. Max weight capacity applies. Always supervise children inside.</div>
+        <span class="spn">Pricing negotiable &mdash; ask for a quote</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Foam Cannon Party" loading="lazy">
+        <span class="stag" style="background:#00C97A">Crowd Favorite</span>
+      </div>
+      <div class="sb">
+        <h3>Foam Cannon</h3>
+        <p>The ultimate foam party! Our high-powered cannon shoots mountains of safe, non-toxic foam. Kids AND adults go crazy for this. Perfect for summer blowouts!</p>
+        <div class="htu"><strong>How to Use</strong>Requires garden hose + electrical outlet. Best on grass or patio. Non-toxic biodegradable foam &mdash; safe for kids and pets. We operate it for you!</div>
+        <span class="spn">Pricing negotiable &mdash; ask for a quote</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&q=80" alt="Cotton Candy Machine" loading="lazy">
+        <span class="stag" style="background:#FF4FBF">Covers 35 Guests</span>
+      </div>
+      <div class="sb">
+        <h3>Cotton Candy Machine</h3>
+        <p>Spun fresh right at your party! Base price covers up to <strong>35 servings</strong>. Bigger crowd? We charge per additional person &mdash; just tell us your headcount!</p>
+        <div class="htu"><strong>How to Use</strong>We bring everything &mdash; machine, sugar, cones. Needs standard outlet. We operate it! Available in classic pink, blue, or mixed flavors.</div>
+        <span class="spn">Base covers 35 guests &middot; Extra guests prorated</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=600&q=80" alt="Popcorn Machine" loading="lazy">
+        <span class="stag" style="background:#FF7A00">Covers 35 Guests</span>
+      </div>
+      <div class="sb">
+        <h3>Popcorn Machine</h3>
+        <p>Fresh, hot, buttery popcorn served right at your event! Base price covers up to <strong>35 servings</strong>. More guests? We adjust pricing based on your count.</p>
+        <div class="htu"><strong>How to Use</strong>We bring machine, kernels, oil, bags and seasonings. Just point us to an outlet. Made fresh in batches throughout your event &mdash; always warm!</div>
+        <span class="spn">Base covers 35 guests &middot; Extra guests prorated</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt="Party Chairs and Tables" loading="lazy">
+        <span class="stag" style="background:#1A1A2E">Full Setup</span>
+      </div>
+      <div class="sb">
+        <h3>Chairs &amp; Tables</h3>
+        <p>We deliver, set up, and pick up clean folding tables and chairs. No borrowing from anyone &mdash; we handle everything! Multiple sizes and configurations available.</p>
+        <div class="htu"><strong>How to Use</strong>Tell us your guest count and preferred layout at booking. We set everything up before your event and break it all down at pickup.</div>
+        <span class="spn">Priced by quantity &mdash; ask for a quote</span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="siw">
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80" alt="Party Tent" loading="lazy">
+        <span class="stag" style="background:#8B2BE2">Weather-Ready</span>
+      </div>
+      <div class="sb">
+        <h3>Party Tents</h3>
+        <p>Keep guests comfortable rain or shine! Our large party tents provide shade and shelter. Pairs perfectly with chairs &amp; tables for a complete outdoor setup.</p>
+        <div class="htu"><strong>How to Use</strong>We set up on flat grass or paved area before guests arrive. Anchoring included for safety. Let us know about any underground utilities beforehand.</div>
+        <span class="spn">Pricing by size &mdash; ask for a quote</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="delivery">
+  <div class="slabel">Delivery Info</div>
+  <h2 class="stitle">We Come <span style="color:#FFD600">To You</span></h2>
+  <p class="ssub">Based in Bridgeport &mdash; we serve all of Fairfield County and beyond. Simple, transparent delivery pricing with no surprises.</p>
+  <div class="dgrid">
+    <div class="dc"><div class="di">&#128666;</div><h4>Free Zone</h4><p>Delivery is <strong>included at no extra charge</strong> for locations within 30 miles of Bridgeport, CT &mdash; covering most of Fairfield County!</p></div>
+    <div class="dc"><div class="di">&#128205;</div><h4>Beyond 30 Miles</h4><p>Outside the free zone? We go the extra distance at <strong>just $5 per mile</strong> beyond 30 miles from Bridgeport.</p></div>
+    <div class="dc"><div class="di">&#128295;</div><h4>Full Setup Included</h4><p>We don't just drop it off &mdash; we <strong>fully set up every item</strong> at your venue so everything is ready when guests arrive.</p></div>
+    <div class="dc"><div class="di">&#9851;</div><h4>Pickup Included</h4><p>When the party's over, we return and <strong>break everything down</strong> and load it all up. You don't lift a finger!</p></div>
+  </div>
+</section>
+
+<section id="deposit">
+  <div class="slabel">Pricing &amp; Deposit</div>
+  <h2 class="stitle">Simple, <span style="color:#8B2BE2">Honest Pricing</span></h2>
+  <p class="ssub">No hidden fees. All prices are negotiable &mdash; we want to make your party happen within your budget.</p>
+  <div class="dbox">
+    <span class="bi">&#129309;</span>
+    <h3>Deposit Required to Reserve Your Date</h3>
+    <p>To lock in your party date, a <strong>deposit is required at booking</strong>. It goes toward your total balance and reserves your rentals &mdash; especially important on busy weekends!</p>
+    <p>Remaining balance is due on the day of your event. Your exact deposit amount will be outlined in your custom quote.</p>
+    <p><strong>Cotton Candy &amp; Popcorn:</strong> Base pricing covers up to <strong>35 guests</strong>. More people? We charge a per-person add-on based on your final headcount.</p>
+    <p><strong>All prices are negotiable.</strong> Reach out &mdash; we genuinely want to work within your budget!</p>
+    <div class="pays">
+      <div class="pay" style="background:#1A1A2E">Cash</div>
+      <div class="pay" style="background:#00875a">Zelle</div>
+      <div class="pay" style="background:#0070ba">Venmo</div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:white">
+  <div class="tc">
+    <div class="slabel">Simple Process</div>
+    <h2 class="stitle">How It <span style="color:#FF7A00">Works</span></h2>
+    <p class="ssub" style="margin:0 auto 2.5rem">From request to party &mdash; here's what to expect every step of the way.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="snum" style="background:linear-gradient(135deg,#0078FF,#8B2BE2)">1</div><h4>Fill Out the Form</h4><p>Tell us your date, location, guest count and which services you want. Takes under 2 minutes!</p></div>
+    <div class="step"><div class="snum" style="background:linear-gradient(135deg,#FF7A00,#FF3B5C)">2</div><h4>Get a Free Quote</h4><p>We respond same day with a custom quote. All prices are negotiable &mdash; we work with your budget.</p></div>
+    <div class="step"><div class="snum" style="background:linear-gradient(135deg,#00C97A,#0078FF)">3</div><h4>Pay Deposit &amp; Lock It In</h4><p>Confirm with a deposit via Cash, Zelle, or Venmo. Your date is officially reserved!</p></div>
+    <div class="step"><div class="snum" style="background:linear-gradient(135deg,#FF4FBF,#FF7A00)">4</div><h4>We Show Up &amp; Set Up</h4><p>We arrive early, set everything up professionally. Remaining balance due on arrival.</p></div>
+    <div class="step"><div class="snum" style="background:linear-gradient(135deg,#FFD600,#00C97A)">5</div><h4>You Party!</h4><p>Enjoy stress-free! When done, we return to break down and pick up every last item.</p></div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="slabel">Request a Quote</div>
+  <h2 class="stitle">Let's Plan Your <span style="color:#FFD600">Party!</span></h2>
+  <p class="ssub">Fill out the form below and we'll get back to you the same day. Weekends fill up fast &mdash; reach out early!</p>
+  <div class="fcard" id="fcard">
+    <div id="fcontent">
+      <div class="fgrid">
+        <div class="fg"><label>Your Name *</label><input type="text" id="iname" placeholder="Jane Smith"></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" id="iphone" placeholder="(203) 555-0100"></div>
+        <div class="fg"><label>Email Address *</label><input type="email" id="iemail" placeholder="jane@email.com"></div>
+        <div class="fg"><label>Party Date *</label><input type="date" id="idate"></div>
+        <div class="fg"><label>Party Location / City *</label><input type="text" id="iloc" placeholder="e.g. Stamford, CT"></div>
+        <div class="fg"><label>Estimated Guest Count *</label><input type="number" id="iguests" placeholder="e.g. 40" min="1"></div>
+        <div class="fg full">
+          <label>Services You Are Interested In</label>
+          <div class="cbgrid">
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Big Bounce House + Slide + Pool"> Big Bounce + Slide + Pool</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Bounce House + Slide"> Bounce House + Slide</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Mini Bounce House"> Mini Bounce House</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Foam Cannon"> Foam Cannon</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Cotton Candy Machine"> Cotton Candy Machine</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Popcorn Machine"> Popcorn Machine</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Chairs and Tables"> Chairs &amp; Tables</div>
+            <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Party Tent"> Party Tent</div>
+          </div>
+        </div>
+        <div class="fg full"><label>Tell Us About Your Party</label><textarea id="imsg" placeholder="Any special requests, questions about delivery to your area, or anything else we should know..."></textarea></div>
+      </div>
+      <button class="subbtn" onclick="submitForm()">Send My Quote Request!</button>
+      <p class="fnote">We respond same day &middot; No commitment required &middot; All prices negotiable</p>
+    </div>
+    <div class="succ" id="succMsg">
+      <div class="ck">&#127881;</div>
+      <h3>Request Sent!</h3>
+      <p>We got your info and will be in touch <strong>same day</strong> with a custom quote.<br>Get ready for the most fun party in the neighborhood!</p>
+    </div>
+  </div>
+  <div class="oc">
+    <p>Prefer to reach out directly?</p>
+    <a href="mailto:fun360renter@gmail.com">fun360renter@gmail.com</a><br><br>
+    <span style="color:rgba(255,255,255,0.75);font-weight:700;font-size:0.97rem">Add your phone number here!</span>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="slabel">FAQ</div>
+  <h2 class="stitle">Common <span style="color:#0078FF">Questions</span></h2>
+  <div class="flist">
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">How far do you travel for delivery? <span class="arr">&#9660;</span></div><div class="fa">We are based in Bridgeport, CT and cover all of Fairfield County. Delivery within 30 miles is free. Beyond that, we charge $5 per mile. Just include your location in your quote request and we will calculate it for you!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Is setup really included? <span class="arr">&#9660;</span></div><div class="fa">100%! We deliver, fully set up every item, and return to break it all down when the party is over. You do not need to lift a finger!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">What do I need to provide for the bounce houses? <span class="arr">&#9660;</span></div><div class="fa">A flat outdoor space and access to a standard outdoor electrical outlet within about 50 feet. For the bounce house with the mini pool, you will also need a garden hose. We bring everything else!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">How does cotton candy and popcorn pricing work? <span class="arr">&#9660;</span></div><div class="fa">Base pricing covers up to 35 guests for both machines. If your party is bigger, we add a per-person charge for the extra guests. Just give us your headcount and we will include it in your quote.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Do I need to pay a deposit? <span class="arr">&#9660;</span></div><div class="fa">Yes &mdash; a deposit is required to officially reserve your date. The amount will be in your custom quote and goes toward your total. Remaining balance is due on the day of your event.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">Are the bounce houses safe? <span class="arr">&#9660;</span></div><div class="fa">Absolutely. All inflatables are commercial-grade, regularly cleaned and inspected. We secure them properly during setup. Adult supervision should be maintained at all times and we will walk you through safety rules on arrival.</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">What if it rains on my party day? <span class="arr">&#9660;</span></div><div class="fa">We monitor weather closely and will contact you ahead of your event. Bounce houses cannot be used in rain or high winds for safety. We will work with you on rescheduling if needed &mdash; that is also why adding a tent is a great idea!</div></div>
+    <div class="fi"><div class="fq" onclick="toggleFaq(this)">How do I pay? <span class="arr">&#9660;</span></div><div class="fa">We accept Cash, Zelle, and Venmo. The deposit is sent at booking confirmation and the balance is due when we arrive on party day.</div></div>
+  </div>
+</section>
+
+<div class="rb"></div>
+
+<footer>
+  <div class="ftop">
+    <div class="fbrand">
+      <span class="flogo">Fun360</span>
+      <p>CT's favorite kids party rental company. Bounce houses, foam machines, food machines, chairs, tables and more &mdash; we bring the full circle of fun to you!</p><br>
+      <a href="mailto:fun360renter@gmail.com" style="color:#FFD600;font-weight:800;font-size:0.92rem">fun360renter@gmail.com</a>
+    </div>
+    <div class="fc">
+      <h5>Services</h5>
+      <a href="#services">Bounce Houses</a>
+      <a href="#services">Foam Cannon</a>
+      <a href="#services">Cotton Candy</a>
+      <a href="#services">Popcorn Machine</a>
+      <a href="#services">Chairs &amp; Tables</a>
+      <a href="#services">Party Tents</a>
+    </div>
+    <div class="fc">
+      <h5>Info</h5>
+      <a href="#delivery">Delivery Info</a>
+      <a href="#deposit">Pricing &amp; Deposit</a>
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book">Get a Free Quote</a>
+      <a href="mailto:fun360renter@gmail.com">Contact Us</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>2026 Fun360 &middot; Fairfield County, CT &middot; All rights reserved</span>
+    <span>Made with love for the community</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('mobMenu');
+  if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.hamburger')){m.classList.remove('open');}
+});
+function toggleFaq(el){
+  var item=el.parentElement;
+  var was=item.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(function(i){i.classList.remove('open');});
+  if(!was){item.classList.add('open');}
+}
+function toggleCb(el){
+  el.classList.toggle('checked');
+  el.querySelector('input').checked=el.classList.contains('checked');
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},4000);
+}
+function submitForm(){
+  var name=document.getElementById('iname').value.trim();
+  var phone=document.getElementById('iphone').value.trim();
+  var email=document.getElementById('iemail').value.trim();
+  var date=document.getElementById('idate').value;
+  var loc=document.getElementById('iloc').value.trim();
+  var guests=document.getElementById('iguests').value.trim();
+  if(!name||!phone||!email||!date||!loc||!guests){
+    showToast('Please fill in all required fields!');
+    return;
+  }
+  var svcs=[];
+  document.querySelectorAll('.cbi.checked').forEach(function(c){svcs.push(c.querySelector('input').value);});
+  var msg=document.getElementById('imsg').value.trim();
+  var subject=encodeURIComponent('Fun360 Quote Request - '+name+' - '+date);
+  var body=encodeURIComponent(
+    'New Quote Request from Fun360 Website\n\n'+
+    'Name: '+name+'\n'+
+    'Phone: '+phone+'\n'+
+    'Email: '+email+'\n'+
+    'Party Date: '+date+'\n'+
+    'Location: '+loc+'\n'+
+    'Guest Count: '+guests+'\n\n'+
+    'Services Requested:\n'+(svcs.length?svcs.map(function(s){return '- '+s;}).join('\n'):'Not specified')+'\n\n'+
+    'Additional Info:\n'+(msg||'None')
+  );
+  window.location.href='mailto:fun360renter@gmail.com?subject='+subject+'&body='+body;
+  document.getElementById('fcontent').style.display='none';
+  document.getElementById('succMsg').style.display='block';
+  showToast('Quote request sent! We will be in touch same day.');
+}
+var di=document.getElementById('idate');
+if(di){di.min=new Date().toISOString().split('T')[0];}
+</script>
+</body>
+</html>
