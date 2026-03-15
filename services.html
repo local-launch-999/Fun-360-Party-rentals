@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Fun360 Party Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:#FFF8F0;color:#1A1A2E;overflow-x:hidden}
+.rb{height:6px;background:linear-gradient(90deg,#FF3B5C,#FF7A00,#FFD600,#00C97A,#0078FF,#8B2BE2,#FF4FBF)}
+nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{font-family:'Fredoka One',cursive;font-size:2rem;text-decoration:none;background:linear-gradient(135deg,#0078FF,#8B2BE2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo span{-webkit-text-fill-color:#FF7A00}
+.nav-center{display:flex;gap:1.8rem;list-style:none}
+.nav-center a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:0.9rem;transition:color 0.2s}
+.nav-center a:hover,.nav-center a.active{color:#0078FF}
+.nav-right{display:flex;align-items:center;gap:0.9rem}
+.nav-phone{font-weight:800;font-size:0.88rem;color:#1A1A2E;text-decoration:none;white-space:nowrap}
+.nav-phone:hover{color:#0078FF}
+.nav-book{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:0.5rem 1.4rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1rem;text-decoration:none;box-shadow:0 4px 16px rgba(255,150,0,0.35);transition:transform 0.2s;white-space:nowrap}
+.nav-book:hover{transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:3px;background:#1A1A2E;border-radius:3px}
+.mob-menu{display:none;position:fixed;top:70px;left:0;right:0;background:white;z-index:998;padding:1rem 5% 1.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.12);flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:1rem;padding:0.85rem 0;border-bottom:1px solid #f0f0f0}
+.mob-menu a:last-child{border-bottom:none}
+.mob-cta{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E !important;text-align:center;border-radius:12px;margin-top:0.6rem;padding:0.9rem !important;font-family:'Fredoka One',cursive;font-size:1.1rem;border-bottom:none !important}
+@media(max-width:900px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:520px){.nav-phone{display:none}}
+
+.page-hero{background:linear-gradient(135deg,#0078FF,#8B2BE2);padding:4rem 5%;text-align:center;color:white}
+.page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.2rem,5vw,4rem);margin-bottom:0.8rem}
+.page-hero p{font-size:1.05rem;font-weight:600;opacity:0.9;max-width:560px;margin:0 auto;line-height:1.65}
+
+.section{padding:4.5rem 5%}
+.slabel{font-size:0.76rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#0078FF;margin-bottom:0.4rem}
+.stitle{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4.5vw,3rem);color:#1A1A2E;margin-bottom:0.8rem;line-height:1.1}
+.tc{text-align:center}
+
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
+.sc{border-radius:22px;overflow:hidden;box-shadow:0 4px 22px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s;background:white}
+.sc:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,0.13)}
+.siw{position:relative;height:220px;overflow:hidden}
+.siw img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.sc:hover .siw img{transform:scale(1.06)}
+.stag{position:absolute;top:12px;left:12px;padding:0.28rem 0.85rem;border-radius:50px;font-size:0.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:white}
+.sb{padding:1.6rem}
+.sb h3{font-family:'Fredoka One',cursive;font-size:1.5rem;margin-bottom:0.5rem;color:#1A1A2E}
+.sb p{color:#666;font-size:0.93rem;line-height:1.65;margin-bottom:0.9rem}
+.htu{background:#f4f6ff;border-left:4px solid #0078FF;padding:0.8rem 1rem;font-size:0.84rem;color:#444;line-height:1.65;border-radius:0 10px 10px 0}
+.htu strong{color:#0078FF;display:block;margin-bottom:3px;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px}
+.spn{display:inline-block;margin-top:0.9rem;font-weight:800;font-size:0.87rem;color:#0078FF}
+
+.cta-band{background:linear-gradient(135deg,#FF3B5C,#FF7A00,#FFD600);padding:4rem 5%;text-align:center}
+.cta-band h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,5vw,3rem);color:white;margin-bottom:0.8rem}
+.cta-band p{color:rgba(255,255,255,0.9);font-size:1.05rem;margin-bottom:2rem;font-weight:600}
+.cta-call{background:white;color:#1A1A2E;padding:1rem 2.5rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1.2rem;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,0.15);transition:transform 0.2s;display:inline-block}
+.cta-call:hover{transform:translateY(-3px)}
+
+footer{background:#1A1A2E;color:rgba(255,255,255,0.7);padding:3rem 5% 2rem}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:1.5rem}
+@media(max-width:720px){.ftop{grid-template-columns:1fr;gap:1.8rem}}
+.fbrand .flogo{font-family:'Fredoka One',cursive;font-size:2rem;background:linear-gradient(135deg,#FFD600,#FF7A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.7rem}
+.fbrand p{font-size:0.9rem;line-height:1.75;max-width:280px;margin-bottom:0.6rem}
+.fbrand a{display:block;color:#FFD600;font-weight:800;font-size:0.92rem;text-decoration:none;margin-bottom:0.3rem}
+.fc h5{font-family:'Fredoka One',cursive;font-size:1.05rem;color:white;margin-bottom:0.9rem}
+.fc a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;margin-bottom:0.45rem;transition:color 0.2s}
+.fc a:hover{color:#FFD600}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.82rem;opacity:0.5}
+.fade{opacity:0;transform:translateY(26px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="rb"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Fun<span>360</span></a>
+  <ul class="nav-center">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact &amp; Book</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+14753304368" class="nav-phone">&#128222; (475) 330-4368</a>
+    <a href="tel:+14753304368" class="nav-book">Book Your Party!</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="about.html" onclick="closeMob()">About Us</a>
+  <a href="contact.html" onclick="closeMob()">Contact &amp; Book</a>
+  <a href="tel:+14753304368" class="mob-cta" onclick="closeMob()">&#128222; Call to Book &mdash; (475) 330-4368</a>
+</div>
+
+<div class="page-hero">
+  <h1>Our Services</h1>
+  <p>Everything you need for the perfect party &mdash; delivered, set up, and picked up by us. You just celebrate!</p>
+</div>
+<div class="rb"></div>
+
+<div class="section" style="background:white">
+  <div class="sgrid">
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=600&q=80" alt="Big Bounce House with Slide and Pool" loading="lazy"><span class="stag" style="background:#0078FF">Most Popular</span></div>
+      <div class="sb">
+        <h3>Big Bounce House + Slide + Pool</h3>
+        <p>Our largest attraction! A massive bounce area, an exciting slide, AND a splash mini pool. Perfect for summer parties and big groups &mdash; kids go absolutely wild!</p>
+        <div class="htu"><strong>How to Use</strong>Needs flat outdoor space + standard electrical outlet. Remove shoes before entering. No food or drinks inside. Adult supervision required at all times.</div>
+        <span class="spn">Pricing negotiable &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Bounce House with Slide" loading="lazy"><span class="stag" style="background:#FF7A00">All Ages</span></div>
+      <div class="sb">
+        <h3>Bounce House + Slide</h3>
+        <p>All the thrill without the water! A large bounce area with an attached slide. Great for any season &mdash; spring, fall, or summer. Works perfectly year round!</p>
+        <div class="htu"><strong>How to Use</strong>Flat space + electrical outlet needed. Remove shoes. One child at top of slide at a time &mdash; feet-first only. Adult supervision required.</div>
+        <span class="spn">Pricing negotiable &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1566207474742-de921626ad0c?w=600&q=80" alt="Mini Bounce House" loading="lazy"><span class="stag" style="background:#FF4FBF">Toddler Friendly</span></div>
+      <div class="sb">
+        <h3>Mini Bounce House</h3>
+        <p>Our smaller, adorable bounce house for younger kids and tighter spaces. Still packs a ton of fun! Perfect for backyard birthdays and smaller gatherings.</p>
+        <div class="htu"><strong>How to Use</strong>Fits smaller yards. Outlet within 50ft needed. Best for ages 2&ndash;8. Max weight capacity applies. Supervise children at all times.</div>
+        <span class="spn">Pricing negotiable &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Foam Cannon" loading="lazy"><span class="stag" style="background:#00C97A">Crowd Favorite</span></div>
+      <div class="sb">
+        <h3>Foam Cannon</h3>
+        <p>The ultimate foam party experience! Our high-powered cannon shoots mountains of safe, non-toxic foam. Kids AND adults love it. The perfect summer upgrade!</p>
+        <div class="htu"><strong>How to Use</strong>Requires garden hose + electrical outlet. Best on grass or patio. Non-toxic, biodegradable foam &mdash; safe for kids and pets. We operate it for you!</div>
+        <span class="spn">Pricing negotiable &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&q=80" alt="Cotton Candy Machine" loading="lazy"><span class="stag" style="background:#FF4FBF">Covers 35 Guests</span></div>
+      <div class="sb">
+        <h3>Cotton Candy Machine</h3>
+        <p>Spun fresh right at your party! Base price covers up to <strong>35 servings</strong>. Bigger crowd? We add a small per-person charge based on your headcount.</p>
+        <div class="htu"><strong>How to Use</strong>We bring everything &mdash; machine, sugar, cones. Needs a standard outlet. We operate the machine! Available in pink, blue, or mixed flavors.</div>
+        <span class="spn">Base covers 35 guests &middot; Extra guests prorated</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=600&q=80" alt="Popcorn Machine" loading="lazy"><span class="stag" style="background:#FF7A00">Covers 35 Guests</span></div>
+      <div class="sb">
+        <h3>Popcorn Machine</h3>
+        <p>Fresh, hot, buttery popcorn served at your event! Base price covers up to <strong>35 servings</strong>. More guests? We adjust pricing based on your headcount.</p>
+        <div class="htu"><strong>How to Use</strong>We bring machine, kernels, oil, bags and seasonings. Point us to an outlet. Made fresh in batches all event long &mdash; always warm and ready!</div>
+        <span class="spn">Base covers 35 guests &middot; Extra guests prorated</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt="Chairs and Tables" loading="lazy"><span class="stag" style="background:#1A1A2E">Full Setup</span></div>
+      <div class="sb">
+        <h3>Chairs &amp; Tables</h3>
+        <p>We deliver, set up, and pick up clean folding tables and chairs. No borrowing from neighbors, no stacking at the end of the night. Multiple sizes available!</p>
+        <div class="htu"><strong>How to Use</strong>Tell us your guest count and layout at booking. We set everything up before guests arrive and break it all down at pickup. Done!</div>
+        <span class="spn">Priced by quantity &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+    <div class="sc fade">
+      <div class="siw"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80" alt="Party Tent" loading="lazy"><span class="stag" style="background:#8B2BE2">Weather-Ready</span></div>
+      <div class="sb">
+        <h3>Party Tents</h3>
+        <p>Keep your guests comfortable rain or shine! Large tents for shade and shelter. Pairs perfectly with our chairs and tables for a complete outdoor party setup.</p>
+        <div class="htu"><strong>How to Use</strong>We set up on flat grass or paved area. Anchoring included for safety. Let us know about any underground utilities beforehand.</div>
+        <span class="spn">Pricing by size &mdash; call (475) 330-4368</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Like What You See?</h2>
+  <p>Call us today &mdash; we'll build you a custom quote same day. All prices negotiable!</p>
+  <a href="tel:+14753304368" class="cta-call">&#128222; Call (475) 330-4368</a>
+</div>
+
+<footer>
+  <div class="ftop">
+    <div class="fbrand"><span class="flogo">Fun360</span><p>CT's favorite kids party rental company. We bring the full circle of fun to you!</p><a href="tel:+14753304368">&#128222; (475) 330-4368</a><a href="mailto:fun360renter@gmail.com">&#128140; fun360renter@gmail.com</a></div>
+    <div class="fc"><h5>Pages</h5><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About Us</a><a href="contact.html">Contact &amp; Book</a></div>
+    <div class="fc"><h5>Contact</h5><a href="tel:+14753304368">(475) 330-4368</a><a href="mailto:fun360renter@gmail.com">fun360renter@gmail.com</a><a href="#">Fairfield County, CT</a><a href="#">Cash &middot; Zelle &middot; Venmo</a></div>
+  </div>
+  <div class="fbot"><span>&#169; 2026 Fun360 &middot; Fairfield County, CT &middot; All rights reserved</span><span>Made with love for the community</span></div>
+</footer>
+<script>
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('mobMenu');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.hamburger')){m.classList.remove('open');}});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
