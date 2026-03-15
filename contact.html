@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Book - Fun360 Party Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:#FFF8F0;color:#1A1A2E;overflow-x:hidden}
+.rb{height:6px;background:linear-gradient(90deg,#FF3B5C,#FF7A00,#FFD600,#00C97A,#0078FF,#8B2BE2,#FF4FBF)}
+nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{font-family:'Fredoka One',cursive;font-size:2rem;text-decoration:none;background:linear-gradient(135deg,#0078FF,#8B2BE2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo span{-webkit-text-fill-color:#FF7A00}
+.nav-center{display:flex;gap:1.8rem;list-style:none}
+.nav-center a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:0.9rem;transition:color 0.2s}
+.nav-center a:hover,.nav-center a.active{color:#0078FF}
+.nav-right{display:flex;align-items:center;gap:0.9rem}
+.nav-phone{font-weight:800;font-size:0.88rem;color:#1A1A2E;text-decoration:none;white-space:nowrap}
+.nav-phone:hover{color:#0078FF}
+.nav-book{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:0.5rem 1.4rem;border-radius:50px;font-family:'Fredoka One',cursive;font-size:1rem;text-decoration:none;box-shadow:0 4px 16px rgba(255,150,0,0.35);transition:transform 0.2s;white-space:nowrap}
+.nav-book:hover{transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:3px;background:#1A1A2E;border-radius:3px}
+.mob-menu{display:none;position:fixed;top:70px;left:0;right:0;background:white;z-index:998;padding:1rem 5% 1.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.12);flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{text-decoration:none;color:#1A1A2E;font-weight:700;font-size:1rem;padding:0.85rem 0;border-bottom:1px solid #f0f0f0}
+.mob-menu a:last-child{border-bottom:none}
+.mob-cta{background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E !important;text-align:center;border-radius:12px;margin-top:0.6rem;padding:0.9rem !important;font-family:'Fredoka One',cursive;font-size:1.1rem;border-bottom:none !important}
+@media(max-width:900px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:520px){.nav-phone{display:none}}
+
+.page-hero{background:linear-gradient(135deg,#00C97A,#0078FF);padding:4rem 5%;text-align:center;color:white}
+.page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.2rem,5vw,4rem);margin-bottom:0.8rem}
+.page-hero p{font-size:1.05rem;font-weight:600;opacity:0.9;max-width:560px;margin:0 auto;line-height:1.65}
+
+.section{padding:4.5rem 5%}
+.slabel{font-size:0.76rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#0078FF;margin-bottom:0.4rem}
+.stitle{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4.5vw,3rem);color:#1A1A2E;margin-bottom:0.8rem;line-height:1.1}
+.ssub{color:#666;font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:2rem}
+
+/* CONTACT LAYOUT */
+.contact-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;max-width:1100px}
+@media(max-width:860px){.contact-layout{grid-template-columns:1fr}}
+
+/* INFO SIDE */
+.info-card{background:linear-gradient(135deg,#0078FF,#8B2BE2);border-radius:24px;padding:2.5rem;color:white}
+.info-card h3{font-family:'Fredoka One',cursive;font-size:1.8rem;margin-bottom:0.5rem}
+.info-card .sub{opacity:0.85;font-size:0.95rem;line-height:1.7;margin-bottom:2rem}
+.info-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.info-icon{width:44px;height:44px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.info-item h4{font-weight:900;font-size:0.85rem;letter-spacing:0.5px;text-transform:uppercase;opacity:0.8;margin-bottom:0.2rem}
+.info-item a,.info-item p{color:white;text-decoration:none;font-weight:700;font-size:1rem;line-height:1.5}
+.info-item a:hover{text-decoration:underline}
+.pay-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:2rem}
+.pay-badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:0.4rem 1rem;border-radius:8px;font-weight:800;font-size:0.88rem}
+
+/* BIG CALL BUTTON */
+.big-call{display:block;background:linear-gradient(135deg,#FFD600,#FF7A00);color:#1A1A2E;padding:1.2rem 2rem;border-radius:16px;font-family:'Fredoka One',cursive;font-size:1.4rem;text-decoration:none;text-align:center;margin-top:2rem;box-shadow:0 8px 28px rgba(255,120,0,0.4);transition:transform 0.2s}
+.big-call:hover{transform:translateY(-3px)}
+
+/* FORM SIDE */
+.fcard{background:white;border-radius:24px;padding:2.5rem;box-shadow:0 8px 40px rgba(0,0,0,0.1)}
+.fcard h3{font-family:'Fredoka One',cursive;font-size:1.7rem;margin-bottom:0.4rem;color:#1A1A2E}
+.fcard .sub{color:#777;font-size:0.93rem;margin-bottom:1.8rem;line-height:1.6}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:0.35rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-weight:900;font-size:0.79rem;letter-spacing:0.5px;color:#1A1A2E;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{border:2px solid #e0e0e0;border-radius:11px;padding:0.8rem 1rem;font-family:'Nunito',sans-serif;font-size:0.97rem;color:#1A1A2E;background:#fafafa;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#0078FF;background:white;box-shadow:0 0 0 4px rgba(0,120,255,0.08)}
+.fg textarea{resize:vertical;min-height:110px}
+.cbgrid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+@media(max-width:460px){.cbgrid{grid-template-columns:1fr}}
+.cbi{display:flex;align-items:center;gap:0.5rem;background:#f5f5f5;border:2px solid transparent;border-radius:9px;padding:0.58rem 0.85rem;cursor:pointer;font-weight:700;font-size:0.87rem;transition:all 0.2s;user-select:none}
+.cbi.checked{background:#eef4ff;border-color:#0078FF;color:#0078FF}
+.subbtn{width:100%;padding:1.05rem;background:linear-gradient(135deg,#0078FF,#8B2BE2);color:white;border:none;border-radius:13px;font-family:'Fredoka One',cursive;font-size:1.25rem;cursor:pointer;margin-top:1.4rem;transition:transform 0.2s;box-shadow:0 6px 22px rgba(0,120,255,0.28)}
+.subbtn:hover{transform:translateY(-2px)}
+.fnote{text-align:center;font-size:0.82rem;color:#999;margin-top:0.8rem}
+.succ{display:none;text-align:center;padding:2.5rem 1rem}
+.succ .ck{font-size:4rem;margin-bottom:0.8rem}
+.succ h3{font-family:'Fredoka One',cursive;font-size:2rem;color:#00C97A;margin-bottom:0.5rem}
+.succ p{color:#555;line-height:1.7}
+
+footer{background:#1A1A2E;color:rgba(255,255,255,0.7);padding:3rem 5% 2rem}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:1.5rem}
+@media(max-width:720px){.ftop{grid-template-columns:1fr;gap:1.8rem}}
+.fbrand .flogo{font-family:'Fredoka One',cursive;font-size:2rem;background:linear-gradient(135deg,#FFD600,#FF7A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.7rem}
+.fbrand p{font-size:0.9rem;line-height:1.75;max-width:280px;margin-bottom:0.6rem}
+.fbrand a{display:block;color:#FFD600;font-weight:800;font-size:0.92rem;text-decoration:none;margin-bottom:0.3rem}
+.fc h5{font-family:'Fredoka One',cursive;font-size:1.05rem;color:white;margin-bottom:0.9rem}
+.fc a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;margin-bottom:0.45rem;transition:color 0.2s}
+.fc a:hover{color:#FFD600}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.82rem;opacity:0.5}
+.fade{opacity:0;transform:translateY(26px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade.in{opacity:1;transform:none}
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#1A1A2E;color:white;padding:0.9rem 1.4rem;border-radius:13px;font-weight:700;font-size:0.9rem;box-shadow:0 8px 28px rgba(0,0,0,0.22);transform:translateY(100px);opacity:0;transition:all 0.4s;z-index:9999;max-width:300px}
+#toast.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+<div class="rb"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Fun<span>360</span></a>
+  <ul class="nav-center">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="active">Contact &amp; Book</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+14753304368" class="nav-phone">&#128222; (475) 330-4368</a>
+    <a href="tel:+14753304368" class="nav-book">Book Your Party!</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="about.html" onclick="closeMob()">About Us</a>
+  <a href="contact.html" onclick="closeMob()">Contact &amp; Book</a>
+  <a href="tel:+14753304368" class="mob-cta" onclick="closeMob()">&#128222; Call to Book &mdash; (475) 330-4368</a>
+</div>
+
+<div class="page-hero">
+  <h1>Contact &amp; Book</h1>
+  <p>Ready to throw the best party ever? Give us a call or fill out the form &mdash; we respond the same day!</p>
+</div>
+<div class="rb"></div>
+
+<div class="section" style="background:white">
+  <div class="contact-layout">
+
+    <!-- LEFT: Contact Info -->
+    <div class="info-card fade">
+      <h3>Get in Touch</h3>
+      <p class="sub">We respond same day. All prices negotiable. Weekends fill up fast &mdash; reach out early!</p>
+
+      <div class="info-item">
+        <div class="info-icon">&#128222;</div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+14753304368">(475) 330-4368</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">&#128140;</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:fun360renter@gmail.com">fun360renter@gmail.com</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">&#128205;</div>
+        <div>
+          <h4>Service Area</h4>
+          <p>Fairfield County, CT<br>30 miles free &middot; $5/mi beyond</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">&#128172;</div>
+        <div>
+          <h4>Response Time</h4>
+          <p>Same-day response guaranteed</p>
+        </div>
+      </div>
+
+      <div class="pay-row">
+        <span class="pay-badge">Cash</span>
+        <span class="pay-badge">Zelle</span>
+        <span class="pay-badge">Venmo</span>
+      </div>
+
+      <a href="tel:+14753304368" class="big-call">&#128222; Call (475) 330-4368</a>
+    </div>
+
+    <!-- RIGHT: Quote Form -->
+    <div class="fcard fade" id="fcard">
+      <div id="fcontent">
+        <h3>Request a Free Quote</h3>
+        <p class="sub">Fill this out and we'll send you a custom quote same day. No commitment required &mdash; all prices negotiable!</p>
+        <div class="fgrid">
+          <div class="fg"><label>Your Name *</label><input type="text" id="iname" placeholder="Jane Smith"></div>
+          <div class="fg"><label>Phone Number *</label><input type="tel" id="iphone" placeholder="(203) 555-0100"></div>
+          <div class="fg"><label>Email Address *</label><input type="email" id="iemail" placeholder="jane@email.com"></div>
+          <div class="fg"><label>Party Date *</label><input type="date" id="idate"></div>
+          <div class="fg"><label>Party Location / City *</label><input type="text" id="iloc" placeholder="e.g. Stamford, CT"></div>
+          <div class="fg"><label>Estimated Guest Count *</label><input type="number" id="iguests" placeholder="e.g. 40" min="1"></div>
+          <div class="fg full">
+            <label>Services You Are Interested In</label>
+            <div class="cbgrid">
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Big Bounce House + Slide + Pool"> Big Bounce + Slide + Pool</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Bounce House + Slide"> Bounce House + Slide</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Mini Bounce House"> Mini Bounce House</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Foam Cannon"> Foam Cannon</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Cotton Candy Machine"> Cotton Candy Machine</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Popcorn Machine"> Popcorn Machine</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Chairs and Tables"> Chairs &amp; Tables</div>
+              <div class="cbi" onclick="toggleCb(this)"><input type="checkbox" value="Party Tent"> Party Tent</div>
+            </div>
+          </div>
+          <div class="fg full"><label>Tell Us About Your Party</label><textarea id="imsg" placeholder="Any special requests, theme ideas, questions about delivery to your area, or anything else we should know..."></textarea></div>
+        </div>
+        <button class="subbtn" onclick="submitForm()">Send My Quote Request!</button>
+        <p class="fnote">We respond same day &middot; No commitment required &middot; All prices negotiable</p>
+      </div>
+      <div class="succ" id="succMsg">
+        <div class="ck">&#127881;</div>
+        <h3>Request Sent!</h3>
+        <p>We got your message and will be in touch <strong>same day</strong> with a custom quote.<br><br>Or give us a call right now:<br><a href="tel:+14753304368" style="color:#0078FF;font-family:'Fredoka One',cursive;font-size:1.3rem;text-decoration:none">(475) 330-4368</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="ftop">
+    <div class="fbrand"><span class="flogo">Fun360</span><p>CT's favorite kids party rental company. We bring the full circle of fun to you!</p><a href="tel:+14753304368">&#128222; (475) 330-4368</a><a href="mailto:fun360renter@gmail.com">&#128140; fun360renter@gmail.com</a></div>
+    <div class="fc"><h5>Pages</h5><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About Us</a><a href="contact.html">Contact &amp; Book</a></div>
+    <div class="fc"><h5>Contact</h5><a href="tel:+14753304368">(475) 330-4368</a><a href="mailto:fun360renter@gmail.com">fun360renter@gmail.com</a><a href="#">Fairfield County, CT</a><a href="#">Cash &middot; Zelle &middot; Venmo</a></div>
+  </div>
+  <div class="fbot"><span>&#169; 2026 Fun360 &middot; Fairfield County, CT &middot; All rights reserved</span><span>Made with love for the community</span></div>
+</footer>
+<div id="toast"></div>
+<script>
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('mobMenu');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.hamburger')){m.classList.remove('open');}});
+function toggleCb(el){el.classList.toggle('checked');el.querySelector('input').checked=el.classList.contains('checked');}
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},4000);}
+function submitForm(){
+  var name=document.getElementById('iname').value.trim();
+  var phone=document.getElementById('iphone').value.trim();
+  var email=document.getElementById('iemail').value.trim();
+  var date=document.getElementById('idate').value;
+  var loc=document.getElementById('iloc').value.trim();
+  var guests=document.getElementById('iguests').value.trim();
+  if(!name||!phone||!email||!date||!loc||!guests){showToast('Please fill in all required fields!');return;}
+  var svcs=[];
+  document.querySelectorAll('.cbi.checked').forEach(function(c){svcs.push(c.querySelector('input').value);});
+  var msg=document.getElementById('imsg').value.trim();
+  var subject=encodeURIComponent('Fun360 Quote Request - '+name+' - '+date);
+  var body=encodeURIComponent('New Quote Request from Fun360 Website\n\nName: '+name+'\nPhone: '+phone+'\nEmail: '+email+'\nParty Date: '+date+'\nLocation: '+loc+'\nGuest Count: '+guests+'\n\nServices Requested:\n'+(svcs.length?svcs.map(function(s){return '- '+s;}).join('\n'):'Not specified')+'\n\nAdditional Info:\n'+(msg||'None'));
+  window.location.href='mailto:fun360renter@gmail.com?subject='+subject+'&body='+body;
+  document.getElementById('fcontent').style.display='none';
+  document.getElementById('succMsg').style.display='block';
+  showToast('Request sent! We will be in touch same day.');
+}
+var di=document.getElementById('idate');
+if(di){di.min=new Date().toISOString().split('T')[0];}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
